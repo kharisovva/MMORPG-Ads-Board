@@ -1,0 +1,26 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1>{{ advertisement.title }}</h1>
+            <p>Автор: {{ advertisement.author.username }}</p>
+            <div class="mb-4">{{ advertisement.content|safe }}</div>  <!-- |safe для HTML-контента -->
+
+            <h3>Отклики</h3>
+            {% for response in advertisement.response_set.all %}
+                <div class="mb-2">
+                    <strong>{{ response.author.username }}:</strong> {{ response.text }}
+                </div>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+                <form method="post" class="mt-4">
+                    {% csrf_token %}
+                    {{ response_form.as_p }}
+                    <button type="submit" class="btn btn-primary">Отправить отклик</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

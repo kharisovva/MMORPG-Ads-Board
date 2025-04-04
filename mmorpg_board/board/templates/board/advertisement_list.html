@@ -1,0 +1,16 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+    <h1>Все объявления</h1>
+    {% for ad in advertisements %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'advertisement_detail' ad.pk %}">{{ ad.title }}</a>
+                </h5>
+                <p class="card-text">Категория: {{ ad.get_category_display }}</p>
+                <p class="card-text">Автор: {{ ad.author.username }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
