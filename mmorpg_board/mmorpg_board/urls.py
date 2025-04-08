@@ -24,7 +24,7 @@ from mmorpg_board import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path("accounts/", include("allauth.urls")),
     path("", include("board.urls")),
     path("ckeditor5/upload/", upload_file, name="ck_editor_5_upload_file"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

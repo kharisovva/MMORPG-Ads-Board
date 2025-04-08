@@ -24,3 +24,5 @@ htmlcov/
 .dmypy.json
 dist/
 build/
+.DS_Store
+../*
