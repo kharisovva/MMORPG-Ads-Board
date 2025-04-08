@@ -5,7 +5,11 @@ from .views import (
     AdvertisementDetailView,
     AdvertisementListView,
     AdvertisementUpdateView,
+    ResponseAcceptView,
     ResponseCreateView,
+    ResponseDeleteView,
+    ResponseRejectView,
+    ResponsesListView,
 )
 
 urlpatterns = [
@@ -16,4 +20,20 @@ urlpatterns = [
         "<int:pk>/edit/", AdvertisementUpdateView.as_view(), name="advertisement_edit"
     ),
     path("<int:pk>/response/", ResponseCreateView.as_view(), name="response_create"),
+    path("responses/", ResponsesListView.as_view(), name="responses_list"),
+    path(
+        "response/<int:pk>/accept/",
+        ResponseAcceptView.as_view(),
+        name="response_accept",
+    ),
+    path(
+        "response/<int:pk>/reject/",
+        ResponseRejectView.as_view(),
+        name="response_reject",
+    ),
+    path(
+        "response/<int:pk>/delete/",
+        ResponseDeleteView.as_view(),
+        name="response_delete",
+    ),
 ]

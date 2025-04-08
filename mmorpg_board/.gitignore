@@ -1,28 +1,41 @@
-.ruff_cache/
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-CACHEDIR.TAG
 venv/
 pyvenv.cfg
 .env
+
+# Django
 *.log
 logs/
-.idea/
-.vscode/
-.pytest_cache/
+db.sqlite3
+media/
+staticfiles/
+
+# Celery
+celerybeat-schedule
+
+# Linters and formatters
+.ruff_cache/
 .mypy_cache/
+.dmypy.json
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build
+dist/
+build/
+
+# IDEs and editors
 .idea/
 .vscode/
 *.sublime-project
 *.sublime-workspace
-.pytest_cache/
-.coverage
-htmlcov/
-.mypy_cache/
-.dmypy.json
-dist/
-build/
+
+# macOS
 .DS_Store
-../*

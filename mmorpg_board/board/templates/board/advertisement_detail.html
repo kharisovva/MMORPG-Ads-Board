@@ -10,16 +10,21 @@
             <h3>Отклики</h3>
             {% for response in advertisement.response_set.all %}
                 <div class="mb-2">
-                    <strong>{{ response.author.username }}:</strong> {{ response.text }}
+                    <strong>{{ response.author.username }} ({{ response.created_at }}):</strong> {{ response.text }}
+                    <span class="badge bg-secondary">{{ response.get_status_display }}</span>
                 </div>
+            {% empty %}
+                <p>Пока нет откликов.</p>
             {% endfor %}
 
             {% if user.is_authenticated %}
-                <form method="post" class="mt-4">
+                <form method="post" action="{% url 'response_create' pk=advertisement.pk %}" class="mt-4">
                     {% csrf_token %}
                     {{ response_form.as_p }}
                     <button type="submit" class="btn btn-primary">Отправить отклик</button>
                 </form>
+            {% else %}
+                <p>Войдите, чтобы отправить отклик.</p>
             {% endif %}
         </div>
     </div>
